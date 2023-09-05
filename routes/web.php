@@ -12,15 +12,31 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\ClienteController;
 
-Route::get('/', function () {
+Route::get('/', function () { return view('welcome'); });
+Route::get('/dashboard', function () { return view('dashboard'); });
 
-    return view('welcome');
+Route::get('/cliente/listar',[ClienteController::class, 'index']);
+Route::get('/cliente/cadastrar',[ClienteController::class, 'create'] );
+Route::post('/cliente/exibir/{id}',[ClienteController::class, 'show']);
+Route::get('/cliente/importar', function(){ return view('cliente.importar'); });
 
-});
+Route::get('/relatorio/cobranca', function(){ return view('relatorio.cobranca'); });
+Route::get('/relatorio/notificacao-agendada', function(){ return view('relatorio.notificacao-agendada'); });
 
-Route::get('/dashboard', function () {
-    
-    return view('dashboard');
+Route::get('/notificacao/manual', function(){ return view('notificacao.manual'); });
+Route::get('/notificacao/agendada', function(){ return view('notificacao.agendada'); });
 
-});
+Route::get('/configuracoes/banco', function(){ return view('configuracoes.banco'); });
+Route::get('/configuracoes/instancia', function(){ return view('configuracoes.instancia'); });
+Route::get('/configuracoes/integracao', function(){ return view('configuracoes.integracao'); });
+Route::get('/configuracoes/mensagem', function(){ return view('configuracoes.mensagem'); });
+Route::get('/configuracoes/tipocobranca', function(){ return view('configuracoes.tipocobranca'); });
+
+Route::get('/usuario/login', function(){ return view('usuario.login'); });
+Route::get('/usuario/perfil', function(){ return view('usuario.perfil'); });
+Route::post('/usuario/sair', function(){ return view('usuario.log'); });
+Route::post('/usuario/registrar', function(){ return view('usuario.registrar'); });
+
+Route::get('/ajuda/documento', function(){ return view('ajuda.documento'); });
