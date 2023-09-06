@@ -12,9 +12,12 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
-        $busca = request('search');
-    
+        //$busca = request('search');
+
+        //$cliente = Cliente::where('nome','like','%'.$busca)->get();
+
+        $busca = Cliente::All();
+
         return view('cliente.listar', ['busca' => $busca]); 
     }
 
@@ -34,6 +37,16 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        $cliente = new Cliente;
+
+        $cliente->nome = filter_var($request->nome, FILTER_SANITIZE_STRING);
+        $cliente->contato = preg_replace("/[^0-9]/","$1", htmlentities(trim($request->contato)));
+        $cliente->email = filter_var($request->email, FILTER_SANITIZE_EMAIL);
+
+        $cliente->save();
+
+        return view('/dashboard');
+
     }
 
     /**

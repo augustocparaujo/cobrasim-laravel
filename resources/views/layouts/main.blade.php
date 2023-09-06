@@ -178,7 +178,8 @@
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
-              <form action="/cliente/listar/">
+              <form action="/cliente/listar">
+                @csrf
               <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
                   <i class="bx bx-search fs-4 lh-0"></i>
@@ -275,7 +276,7 @@
     <!-- / Layout wrapper -->
 
     <div class="buy-now">
-      <a href="#" target="_blank" class="btn btn-danger btn-buy-now">alerta</a>
+      <a href="#" class="btn btn-danger btn-buy-now">alerta aqui</a>
     </div>
 
     <!-- Core JS -->
@@ -284,7 +285,6 @@
     <script src="/painel/libs/libs/popper/popper.js"></script>
     <script src="/painel/libs/js/bootstrap.js"></script>
     <script src="/painel/libs/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
     <script src="/painel/libs/js/menu.js"></script>
     <!-- endbuild -->
 
@@ -293,11 +293,16 @@
 
     <!-- Main JS -->
     <script src="/painel/js/main.js"></script>
+    <!-- static Js -->
+    <script src="/painel/libs/js/maskInput.js"></script>
 
     <!-- Page JS -->
     <script src="/painel/js/dashboards-analytics.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Js mask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
   </body>
 </html>

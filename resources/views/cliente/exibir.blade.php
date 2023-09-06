@@ -7,28 +7,30 @@
       <div class="d-flex align-items-end row">
         <div class="col-12">
           <div class="card-body">
-            <h5 class="card-title text-primary">Cadastro rápido</h5>
+            <h5 class="card-title text-primary">Dados cliente</h5>
           </div>
         </div>
         <div class="col-12 card-body">
-            <form>
+            <form action="" method="post">
+              @csrf
+              <input type="hidden" name="id" value="{{ $cliente->id }}"/>
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label" for="basic-default-name">Nome</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="basic-default-name" placeholder="John Doe">
+                    <input type="text" class="form-control" id="basic-default-name" placeholder="John Doe" value="{{ $cliente->nome }}">
                   </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-default-phone">Contato (whatsapp)</label>
                     <div class="col-sm-10">
-                        <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone">
+                        <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone" name="{{ $cliente->contato }}">
                       </div>
                   </div>
                   <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-default-email">E-mail</label>
                     <div class="col-sm-10">
                       <div class="input-group input-group-merge">
-                        <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2">
+                        <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2" value="{{ $cliente->email }}">
                         <span class="input-group-text" id="basic-default-email2">@example.com</span>
                       </div>
                     </div>

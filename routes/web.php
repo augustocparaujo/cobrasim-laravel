@@ -17,9 +17,10 @@ use App\Http\Controllers\ClienteController;
 Route::get('/', function () { return view('welcome'); });
 Route::get('/dashboard', function () { return view('dashboard'); });
 
-Route::get('/cliente/listar',[ClienteController::class, 'index']);
+Route::get('/cliente/listar/{search?}',[ClienteController::class, 'index']);
 Route::get('/cliente/cadastrar',[ClienteController::class, 'create'] );
-Route::post('/cliente/exibir/{id}',[ClienteController::class, 'show']);
+Route::post('/cadastrar',[ClienteController::class, 'store'] );
+Route::get('/cliente/exibir/{id}',[ClienteController::class, 'show']);
 Route::get('/cliente/importar', function(){ return view('cliente.importar'); });
 
 Route::get('/relatorio/cobranca', function(){ return view('relatorio.cobranca'); });
