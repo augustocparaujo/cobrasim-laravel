@@ -45,7 +45,7 @@ class ClienteController extends Controller
 
         $cliente->save();
 
-        return view('/dashboard');
+        return redirect('/cliente/listar')->with(['msg' => 'cadastro realizado com sucesso', 'tipo' => 'success']);
 
     }
 

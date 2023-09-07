@@ -12,7 +12,7 @@
           </div>
           <div class="col-12 card-body">
             
-              <form action="/cadastrar" method="post">
+              <form action="/cadastrar" method="POST">
                 @csrf
                   <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-default-name">Nome</label>
@@ -30,7 +30,7 @@
                       <label class="col-sm-2 col-form-label" for="basic-default-email">E-mail</label>
                       <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                          <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2" name="email">
+                          <input type="email" id="basic-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2" name="email">
                           <span class="input-group-text" id="basic-default-email2">@example.com</span>
                         </div>
                       </div>

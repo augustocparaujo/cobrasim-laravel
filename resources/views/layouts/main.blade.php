@@ -274,10 +274,15 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-
+    <!-- msg -->
+    @if(session('msg'))
     <div class="buy-now">
-      <a href="#" class="btn btn-danger btn-buy-now">alerta aqui</a>
+      <div class="alert alert-{{ session('tipo') }} alert-dismissible btn-buy-now text-black" role="alert">
+        {{ session('msg') }}!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     </div>
+    @endif
 
     <!-- Core JS -->
     <!-- build:js assets/libs/js/core.js -->
@@ -304,5 +309,9 @@
     <!-- Js mask -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+    <!-- personal js-->
+    <script>
+      $('.buy-now').fadeOut(6000);
+    </script>
   </body>
 </html>

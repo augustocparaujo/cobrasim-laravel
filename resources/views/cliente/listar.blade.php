@@ -36,7 +36,7 @@
                                     <td class="mobile">{{ $cliente->contato }}</td>
                                     <td><span class="badge bg-label-success me-1">{{ $cliente->situacao }}</span></td>
                                     <td>
-                                        <a href="/cliente/exibir/{{ $cliente->id }}" title="editar dados"><i class="bx bx-edit-alt me-1"></i></a>
+                                        <a href="/cliente/exibir" title="editar dados"><i class="bx bx-edit-alt me-1"></i></a>
                                         <a href="" title="excluir cliente"><i class="bx bx-trash me-1 text-danger"></i></a>
                                     </td>
                                 </tr>
