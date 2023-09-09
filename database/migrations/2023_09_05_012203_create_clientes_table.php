@@ -17,8 +17,8 @@ return new class extends Migration
             /** falta criar o ligação do cliente com iduser que a empresa  hasmany(muitos pra um) */
             $table->string('idmikweb',20)->default('0');
             $table->string('situacao', 20)->default('ativo');
-            $table->string('formacobranca', 20)->default('');
-            $table->string('vencimento', 2)->default('');
+            $table->string('formacobranca', 20)->default('boleto');
+            $table->string('vencimento', 2)->default('00');
             $table->string('nome', 100);
             $table->string('cpf', 14)->default('');
             $table->string('rg', 20)->default('');
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('complemento', 100)->default('');
             $table->text('obs')->default('');
             $table->string('usuariocad')->default('');
-            $table->string('ativacao',10)->default('0000-00-00');
+            $table->date('ativacao')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

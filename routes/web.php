@@ -21,6 +21,7 @@ Route::get('/cliente/listar/{search?}',[ClienteController::class, 'index']);
 Route::get('/cliente/cadastrar',[ClienteController::class, 'create'] );
 Route::post('/cadastrar',[ClienteController::class, 'store'] );
 Route::get('/cliente/exibir/{id}',[ClienteController::class, 'show']);
+
 Route::get('/cliente/importar', function(){ return view('cliente.importar'); });
 
 Route::get('/relatorio/cobranca', function(){ return view('relatorio.cobranca'); });
@@ -35,9 +36,11 @@ Route::get('/configuracoes/integracao', function(){ return view('configuracoes.i
 Route::get('/configuracoes/mensagem', function(){ return view('configuracoes.mensagem'); });
 Route::get('/configuracoes/tipocobranca', function(){ return view('configuracoes.tipocobranca'); });
 
+/*
 Route::get('/usuario/login', function(){ return view('usuario.login'); });
 Route::get('/usuario/perfil', function(){ return view('usuario.perfil'); });
 Route::post('/usuario/sair', function(){ return view('usuario.log'); });
 Route::post('/usuario/registrar', function(){ return view('usuario.registrar'); });
+*/
 
 Route::get('/ajuda/documento', function(){ return view('ajuda.documento'); });

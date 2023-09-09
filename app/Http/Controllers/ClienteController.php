@@ -12,13 +12,21 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //$busca = request('search');
+        $busca = request('search');
 
-        //$cliente = Cliente::where('nome','like','%'.$busca)->get();
+        if($busca){
+        
+            $cliente = Cliente::where([
+                    ['nome','like','%'.$busca.'%']
+                ])->get();
 
-        $busca = Cliente::All();
+        }else{
 
-        return view('cliente.listar', ['busca' => $busca]); 
+            $cliente = Cliente::All();
+
+        }
+        
+        return view('cliente.listar', ['cliente' => $cliente, 'search' => $busca]); 
     }
 
     /**
@@ -44,18 +52,22 @@ class ClienteController extends Controller
         $cliente->email = filter_var($request->email, FILTER_SANITIZE_EMAIL);
 
         $cliente->save();
+        $idNovo = $cliente->id;
 
-        return redirect('/cliente/listar')->with(['msg' => 'cadastro realizado com sucesso', 'tipo' => 'success']);
+        return redirect('/cliente/exibir/'.$idNovo)->with(['msg' => 'cadastro realizado com sucesso', 'tipo' => 'success']);
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Cliente $cliente)
+    public function show($id)
     {
         //
-        return view('cliente.exibir');
+
+        $cliente = Cliente::findOrFail($id);
+
+        return view('cliente.exibir',['cliente' => $cliente]);
 
     }
 

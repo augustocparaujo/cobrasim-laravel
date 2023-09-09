@@ -178,7 +178,7 @@
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
-              <form action="/cliente/listar">
+              <form action="/cliente/listar" method="GET">
                 @csrf
               <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
@@ -195,7 +195,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="../painel/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="/painel/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -204,7 +204,7 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../painel/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="/painel/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">

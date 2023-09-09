@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
                 <table class="table table-bordered">
-                    <thead>
+                    <thead class="table-dark">
                     <tr>
                         <th>Project</th>
                         <th>Client</th>
