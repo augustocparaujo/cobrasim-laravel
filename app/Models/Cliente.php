@@ -18,4 +18,12 @@ class Cliente extends Model
 
     protected $dates = ['date'];
 
+    //perencer a apenas um usuário
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+
+    //atualizar tudo // se quiser que algo não possa ser atualizado só descriminar
+    protected $guarded = [];
+
 }

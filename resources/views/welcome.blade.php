@@ -42,13 +42,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li style="display: none;" class="nav-item"> <a class="nav-link" href="index.html">Home</a>
+            <li style="display: none;" class="nav-item"> <a class="nav-link" href="index.html">Dashboard</a>
             </li>
 
           </ul>
-          <!-- account btn --> <a href="acesso/" class="btn btn-outline-primary">Login</a>
-          <!-- account btn --> <a href="acesso/" class="btn btn-outline-primary  ms-2 ms-lg-3">Consultar CPF</a>
-          <!-- account btn --> <a href="registrar.php?plano=1" class="btn btn-primary ms-2 ms-lg-3">Registrar</a>
+          <!-- account btn --> <a href="/login" class="btn btn-outline-primary">Login</a>
+          <!-- account btn --> <a href="/register" class="btn btn-primary ms-2 ms-lg-3">Registrar</a>
         </div>
       </div>
     </nav>

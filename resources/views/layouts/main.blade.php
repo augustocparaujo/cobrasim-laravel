@@ -51,10 +51,10 @@
           </div>
 
           <div class="menu-inner-shadow"></div>
-
+          @auth
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item @yield('dashboard')">
               <a href="/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -64,19 +64,19 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Cliente</span>
             </li>
-            <li class="menu-item cliente-listar">
+            <li class="menu-item @yield('cliente-cadastrar')">
               <a href="/cliente/cadastrar" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-plus"></i>
                 <div data-i18n="Boxicons">Cadastrar</div>
               </a>
             </li>
-            <li class="menu-item cliente-listar">
+            <li class="menu-item @yield('cliente-listar')">
               <a href="/cliente/listar" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Boxicons">Listar</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item @yield('cliente-importar')">
               <a href="/cliente/importar" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-crown"></i>
                 <div data-i18n="Boxicons">Importar</div>
@@ -85,13 +85,13 @@
            
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Relatório</span></li>
-            <li class="menu-item">
+            <li class="menu-item @yield('cobranca')">
               <a href="/relatorio/cobranca" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Cobrança</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item @yield('relatorio-notificacao-agendada')">
               <a href="/relatorio/notificacao-agendada" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Notificação agendada</div>
@@ -100,13 +100,13 @@
 
              <!-- Components -->
              <li class="menu-header small text-uppercase"><span class="menu-header-text">Notificação</span></li>
-             <li class="menu-item">
+             <li class="menu-item @yield('notificacao-manual')">
                <a href="/notificacao/manual" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-collection"></i>
                  <div data-i18n="Basic">Manual</div>
                </a>
              </li>
-             <li class="menu-item">
+             <li class="menu-item @yield('notificacao-agendada')">
                <a href="/notificacao/agendada" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-collection"></i>
                  <div data-i18n="Basic">Agendada</div>
@@ -116,31 +116,31 @@
 
             <!-- Forms & Tables -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span></li>
-            <li class="menu-item">
+            <li class="menu-item @yield('configuracoes-banco')">
               <a href="/configuracoes/banco" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Banco</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item @yield('configuracoes-mensagem')">
               <a href="/configuracoes/mensagem" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Mensagem</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item @yield('configuracoes-integracao')">
               <a href="/configuracoes/integracao" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Integração</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item @yield('configuracoes-tipocobranca')">
               <a href="/configuracoes/tipocobranca" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Tipos de cobrança</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item @yield('configuracoes-instancia')">
               <a href="/configuracoes/instancia" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Instância whatsapp</div>
@@ -155,13 +155,15 @@
                 <div data-i18n="Support">Suporte</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item @yield('ajuda-documento')">
               <a href="/ajuda/documento" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Documentos</div>
               </a>
             </li>
-          </ul>
+          </ul>            
+          @endauth
+
         </aside>
         <!-- / Menu -->
 
@@ -208,7 +210,7 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
+                            <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
                             <small class="text-muted">Admin</small>
                           </div>
                         </div>
@@ -224,10 +226,16 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="/usuario/sair">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Sair</span>
-                      </a>
+                      <form action="/logout" method="post">
+                        @csrf
+                        <a class="dropdown-item" 
+                          href="/logout" 
+                          onclick="event.preventDefault();
+                          this.closest('form').submit();">
+                          <i class="bx bx-power-off me-2"></i>
+                          <span class="align-middle">Sair</span>
+                        </a>
+                      </form>
                     </li>
                   </ul>
                 </li>
@@ -254,10 +262,11 @@
             <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                 <div class="mb-2 mb-md-0">
-                  ©
+                  Cobra Sim ©
                   <script>
                     document.write(new Date().getFullYear());
-                  </script>
+                  </script> |
+                  <a href="#">Laravelx10 - PHP 8.2 - Mysql MariaDB 10</a>
                 </div>
               </div>
             </footer>

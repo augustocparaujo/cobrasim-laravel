@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+@section('cliente-listar', 'active')
 
 <div class="row">
   <div class="col-12 mb-4 order-0">
@@ -11,9 +12,9 @@
           </div>
         </div>
         <div class="col-12 card-body">
-          <form>
+          <form action="/cliente/update/{{ $cliente->id }}" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="id" value="{{ $cliente->id }}" />
+            @method('PUT')
             <div class="row">
               <div class="col-lg-3 col-md-3 col-sm-12 mb-3">
                 <label for="defaultSelect" class="form-label">Situação</label>
@@ -55,11 +56,11 @@
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-cpf">CPF/CNPJ</label>
-                <input type="text" class="form-control" id="basic-default-cpf" placeholder="CPF/CNPJ" name="cpf" valeu="{{ $cliente->cpf }}">
+                <input type="text" class="form-control" id="basic-default-cpf" placeholder="CPF/CNPJ" name="cpf" value="{{ $cliente->cpf }}">
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-nascimento">Nascimento</label>
-                <input type="text" class="form-control data" id="basic-default-nascimento" placeholder="00-00-0000" name="nascimento" valeu="{{ $cliente->nascimento }}">
+                <input type="date" class="form-control" id="basic-default-nascimento" placeholder="00-00-0000" name="nascimento" value="{{ $cliente->nascimento }}">
               </div>
             </div>
 
@@ -109,7 +110,35 @@
 
               <div class="col-lg-2 col-md-2 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-uf">UF</label>
-                <input type="text" id="basic-default-uf" class="form-control" placeholder="UF" name="uf" value="{{ $cliente->uf }}">
+                <select type="text" id="basic-default-uf" class="form-select" placeholder="UF" name="estado">                
+                  <option value="AC">AC</option>
+                  <option value="AL">AL</option>
+                  <option value="AP">AP</option>
+                  <option value="AM">AM</option>
+                  <option value="BA">BA</option>
+                  <option value="CE">CE</option>
+                  <option value="DF">DF</option>
+                  <option value="ES">ES</option>
+                  <option value="GO">GO</option>
+                  <option value="MA">MA</option>
+                  <option value="MS">MS</option>
+                  <option value="MT">MT</option>
+                  <option value="MG">MG</option>
+                  <option value="PA">PA</option>
+                  <option value="PB">PB</option>
+                  <option value="PR">PR</option>
+                  <option value="PE">PE</option>
+                  <option value="PI">PI</option>
+                  <option value="RJ">RJ</option>
+                  <option value="RN">RN</option>
+                  <option value="RS">RS</option>
+                  <option value="RO">RO</option>
+                  <option value="RR">RR</option>
+                  <option value="SC">SC</option>
+                  <option value="SP">SP</option>
+                  <option value="SE">SE</option>
+                  <option value="TO">TO</option>
+                </select>
               </div>
 
               <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
@@ -123,18 +152,10 @@
             
             <div class="mb-3">
               <label class="form-label" for="basic-default-message">Observação</label>
-              <textarea id="basic-default-message" class="form-control" placeholder="Digite aqui alguma observação ou anotação"></textarea>
+              <textarea id="basic-default-message" class="form-control" placeholder="Digite aqui alguma observação ou anotação" name="obs">{{ $cliente->obs }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Salvar</button>
           </form>
-
-          <hr style="border: 1px solid E6E1E0"/>
-
-          <h4 style="text-align: center">Enviar notificação</h4>
-          <div class="mb-3">
-            <textarea id="basic-default-texto" class="form-control" placeholder="Digite aqui a mesagem"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Enviar</button>
 
           <hr style="border: 1px solid E6E1E0"/>
 

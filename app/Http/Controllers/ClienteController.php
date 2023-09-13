@@ -13,16 +13,22 @@ class ClienteController extends Controller
     public function index()
     {
         $busca = request('search');
+        
+        //pegando o usuário logado
+        $user = auth()->user();
+        $usuario = $user->id;
 
         if($busca){
         
             $cliente = Cliente::where([
-                    ['nome','like','%'.$busca.'%']
+                    ['nome','like','%'.$busca.'%','AND','user_id' => $usuario]
                 ])->get();
 
         }else{
 
-            $cliente = Cliente::All();
+            $cliente = Cliente::where([
+                ['user_id','=',$usuario]
+                ])->get();
 
         }
         
@@ -50,6 +56,9 @@ class ClienteController extends Controller
         $cliente->nome = filter_var($request->nome, FILTER_SANITIZE_STRING);
         $cliente->contato = preg_replace("/[^0-9]/","$1", htmlentities(trim($request->contato)));
         $cliente->email = filter_var($request->email, FILTER_SANITIZE_EMAIL);
+        //pegando o usuário logado
+        $user = auth()->user();
+        $cliente->user_id = $user->id;
 
         $cliente->save();
         $idNovo = $cliente->id;
@@ -65,33 +74,42 @@ class ClienteController extends Controller
     {
         //
 
-        $cliente = Cliente::findOrFail($id);
-
-        return view('cliente.exibir',['cliente' => $cliente]);
-
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cliente $cliente)
+    public function edit($id)
     {
         //
+        $cliente = Cliente::findOrFail($id);
+
+        return view('cliente.exibir',['cliente' => $cliente]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request)
     {
         //
+       
+        Cliente::findOrFail($request->id)->update($request->all());
+
+        //return redirect('/cliente/exibir/'.$request->id)->with(['msg' => 'registro alterado com sucesso', 'tipo' => 'success']);
+        
+        return back()->with(['msg' => 'registro alterado com sucesso', 'tipo' => 'success']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
         //
+        Cliente::findOrFail($id)->delete();
+
+        return redirect('/cliente/listar')->with(['msg' => 'registro excluido com sucesso', 'tipo' => 'danger']);
+
     }
 }

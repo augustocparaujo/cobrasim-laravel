@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+@section('cliente-cadastrar', 'active')
 
     <div class="row">
     <div class="col-12 mb-4 order-0">
