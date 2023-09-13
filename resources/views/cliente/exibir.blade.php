@@ -165,10 +165,10 @@
                   <table class="table table-bordered">
                       <thead class="table-dark">
                       <tr class="text-center">
-                          <th>Descrição</th>
-                          <th>Parcela</th>
+                          <th>Título</th>
+                          <th>PAR</th>
                           <th>Valor</th>
-                          <th>Vencimento</th>
+                          <th>VENC</th>
                           <th>Valor/Pag</th>
                           <th>Data/Pag</th>
                           <th>Situação</th>
@@ -177,7 +177,7 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Descrição</td>
+                          <td>N</td>
                           <td>Parcela</td>
                           <td>Valor</td>
                           <td>Vencimento</td>
