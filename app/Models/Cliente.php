@@ -18,7 +18,7 @@ class Cliente extends Model
 
     protected $dates = ['date'];
 
-    //perencer a apenas um usuário
+    //pertencer a apenas um usuário
     public function user(){
         return $this->belongsTo('App\Models\User');
     }

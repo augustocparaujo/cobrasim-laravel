@@ -11,29 +11,29 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cobrancas', function (Blueprint $table) {
+        Schema::create('cobranca', function (Blueprint $table) {
             $table->id();
-            $table->string('idcobranca')->nullable();
+            $table->foreignId('user_id')->constrained();
+            $table->integer('cliente_id')->nullable();
+            $table->string('id_cobranca')->nullable();
+            $table->string('custom_id')->nullable();
             $table->longText('link')->nullable();
             $table->string('codigobarra')->nullable();
             $table->string('codigodigitavel')->nullable();
-            $table->string('custom_id')->nullable();
+            $table->longText('pixqrcode')->nullable();
             $table->longText('descricao')->nullable();
-            $table->int('parcela',2)->nullable();	
-            $table->decimal('valor',10,2)->nullable();
+            $table->integer('parcela')->nullable();	
+            $table->decimal('valor')->nullable();
             $table->date('vencimento')->nullable();
-            $table->decimal('valor_recebido',10,2)->nullable();	
+            $table->decimal('valor_recebido')->nullable();	
             $table->date('datapagamento')->nullable();
             $table->string('situacao')->nullable();	
-            $table->longText('pixqrcode')->nullable();
             $table->longText('obs')->nullable();	
-            $table->int('quantidade')->nullable();	
+            $table->integer('quantidade')->nullable();	
             $table->string('tipo')->nullable();
-            $table->int('estoque')->nullable();	
-            $table->string('produto')->nullable();	        
+            $table->integer('estoque')->nullable();	
+            $table->string('produto')->nullable();
             $table->timestamps();
-
-            
         });
     }
 
@@ -42,6 +42,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cobrancas');
+        Schema::dropIfExists('cobranca');
     }
 };

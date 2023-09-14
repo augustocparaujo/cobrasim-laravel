@@ -60,7 +60,7 @@ class User extends Authenticatable
     ];
 
     //ele tem muitos clientes
-    public function clientes(){
+    public function cliente(){
         return $this->hasMany('App\Models\Cliente');
     }
 }

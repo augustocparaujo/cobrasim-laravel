@@ -30,7 +30,11 @@ Route::get('/cliente/exibir/{id}',[ClienteController::class, 'edit'])->middlewar
 Route::put('/cliente/update/{id}',[ClienteController::class, 'update'])->middleware('auth');
 
 Route::get('/cliente/{id}',[ClienteController::class, 'destroy'])->middleware('auth');
-Route::get('/cliente/importar', function(){ return view('cliente.importar'); })->middleware('auth');
+
+//cobranca/create
+//cabranca/update/{id}
+//cobranca/delete/{id}
+
 
 Route::get('/relatorio/cobranca', function(){ return view('relatorio.cobranca'); })->middleware('auth');
 Route::get('/relatorio/notificacao-agendada', function(){ return view('relatorio.notificacao-agendada'); })->middleware('auth');

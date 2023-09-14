@@ -76,12 +76,6 @@
                 <div data-i18n="Boxicons">Listar</div>
               </a>
             </li>
-            <li class="menu-item @yield('cliente-importar')">
-              <a href="/cliente/importar" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-crown"></i>
-                <div data-i18n="Boxicons">Importar</div>
-              </a>
-            </li>         
            
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Relatório</span></li>
@@ -126,12 +120,6 @@
               <a href="/configuracoes/mensagem" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Mensagem</div>
-              </a>
-            </li>
-            <li class="menu-item @yield('configuracoes-integracao')">
-              <a href="/configuracoes/integracao" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Integração</div>
               </a>
             </li>
             <li class="menu-item @yield('configuracoes-tipocobranca')">

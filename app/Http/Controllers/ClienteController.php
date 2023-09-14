@@ -81,8 +81,15 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        //pegar user dono do cadastro
+        $user = auth()->user();
+
         $cliente = Cliente::findOrFail($id);
+
+        //se o usuario não for o dono do cadastro
+        if($user->id != $cliente->user_id){
+            return redirect('/dashboard');
+        }
 
         return view('cliente.exibir',['cliente' => $cliente]);
     }
@@ -106,7 +113,7 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //verficiar se o user é dono do cadastro
         Cliente::findOrFail($id)->delete();
 
         return redirect('/cliente/listar')->with(['msg' => 'registro excluido com sucesso', 'tipo' => 'danger']);
