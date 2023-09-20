@@ -13,26 +13,24 @@ class ClienteController extends Controller
     public function index()
     {
         $busca = request('search');
-        
+
         //pegando o usuário logado
         $user = auth()->user();
         $usuario = $user->id;
 
-        if($busca){
-        
-            $cliente = Cliente::where([
-                    ['nome','like','%'.$busca.'%','AND','user_id' => $usuario]
-                ])->get();
-
-        }else{
+        if ($busca) {
 
             $cliente = Cliente::where([
-                ['user_id','=',$usuario]
-                ])->get();
+                ['nome', 'like', '%' . $busca . '%', 'AND', 'user_id' => $usuario]
+            ])->get();
+        } else {
 
+            $cliente = Cliente::where([
+                ['user_id', '=', $usuario]
+            ])->get();
         }
-        
-        return view('cliente.listar', ['cliente' => $cliente, 'search' => $busca]); 
+
+        return view('cliente.listar', ['cliente' => $cliente, 'search' => $busca]);
     }
 
     /**
@@ -42,7 +40,6 @@ class ClienteController extends Controller
     {
         //
         return view('cliente.cadastrar');
-
     }
 
     /**
@@ -50,20 +47,22 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $cliente = new Cliente;
-
-        $cliente->nome = filter_var($request->nome, FILTER_SANITIZE_STRING);
-        $cliente->contato = preg_replace("/[^0-9]/","$1", htmlentities(trim($request->contato)));
-        $cliente->email = filter_var($request->email, FILTER_SANITIZE_EMAIL);
-        //pegando o usuário logado
+        //pegando o usuário logado e adiconar
         $user = auth()->user();
-        $cliente->user_id = $user->id;
-
-        $cliente->save();
+        $user_id = $user->id;
+        //validar dados
+        $cliente = $request->validate([
+            'nome' => 'required|string',
+            'contato' => 'required|string',
+            'email' => 'required|email',
+        ]);
+        //salvar
+        $cliente = Cliente::create($cliente);
+        //pegar id novo e direcionar para view exibir
         $idNovo = $cliente->id;
+        return redirect('/cliente/exibir/' . $idNovo)->with(['msg' => 'cadastro realizado com sucesso', 'tipo' => 'success']);
 
-        return redirect('/cliente/exibir/'.$idNovo)->with(['msg' => 'cadastro realizado com sucesso', 'tipo' => 'success']);
+        //dd($cliente->toArray());
 
     }
 
@@ -87,11 +86,11 @@ class ClienteController extends Controller
         $cliente = Cliente::findOrFail($id);
 
         //se o usuario não for o dono do cadastro
-        if($user->id != $cliente->user_id){
+        if ($user->id != $cliente->user_id) {
             return redirect('/dashboard');
         }
 
-        return view('cliente.exibir',['cliente' => $cliente]);
+        return view('cliente.exibir', ['cliente' => $cliente]);
     }
 
     /**
@@ -100,11 +99,11 @@ class ClienteController extends Controller
     public function update(Request $request)
     {
         //
-       
+
         Cliente::findOrFail($request->id)->update($request->all());
 
         //return redirect('/cliente/exibir/'.$request->id)->with(['msg' => 'registro alterado com sucesso', 'tipo' => 'success']);
-        
+
         return back()->with(['msg' => 'registro alterado com sucesso', 'tipo' => 'success']);
     }
 
@@ -117,6 +116,5 @@ class ClienteController extends Controller
         Cliente::findOrFail($id)->delete();
 
         return redirect('/cliente/listar')->with(['msg' => 'registro excluido com sucesso', 'tipo' => 'danger']);
-
     }
 }

@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- # CSS Plugins -->
-  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  <link rel="stylesheet" href="{{ asset('plugins/slick/slick.css') }}">
   <link rel="stylesheet" href="/plugins/font-awesome/fontawesome.min.css">
   <link rel="stylesheet" href="/plugins/font-awesome/brands.css">
   <link rel="stylesheet" href="/plugins/font-awesome/solid.css">
