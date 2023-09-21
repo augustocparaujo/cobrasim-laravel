@@ -47,15 +47,18 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //pegando o usuário logado e adiconar
-        $user = auth()->user();
-        $user_id = $user->id;
         //validar dados
         $cliente = $request->validate([
             'nome' => 'required|string',
             'contato' => 'required|string',
             'email' => 'required|email',
         ]);
+
+        //pegando o usuário logado e adiconar
+        $user = auth()->user();
+        //adicionar o dado novo no array
+        $cliente['user_id'] = $user->id;
+
         //salvar
         $cliente = Cliente::create($cliente);
         //pegar id novo e direcionar para view exibir
@@ -63,7 +66,6 @@ class ClienteController extends Controller
         return redirect('/cliente/exibir/' . $idNovo)->with(['msg' => 'cadastro realizado com sucesso', 'tipo' => 'success']);
 
         //dd($cliente->toArray());
-
     }
 
     /**
