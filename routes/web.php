@@ -23,15 +23,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::prefix('/cliente')->group(function () {
-    Route::get('/listar/{search?}', [ClienteController::class, 'index'])->name('cliente.listar');
-    Route::get('/cadastrar', [ClienteController::class, 'create'])->name('cliente.cadastrar');
-    Route::post('/cadastrar/store', [ClienteController::class, 'store'])->name('cadastrar.cliente');
-    Route::get('/exibir/{id}', [ClienteController::class, 'edit'])->name('cliente.exibir');
-    Route::put('/update/{id}', [ClienteController::class, 'update'])->name('cliente.update');
-    Route::get('/{id}', [ClienteController::class, 'destroy'])->name('cliente.delete');
+Route::prefix('cliente')->name('cliente.')->group(function () {
+    Route::get('/listar/{search?}', [ClienteController::class, 'index'])
+        ->where('search', '[A-Za-z]+')
+        ->name('listar');
+
+    Route::get('/cadastrar', [ClienteController::class, 'create'])->name('cadastrar');
+
+    Route::get('/exibir/{id}', [ClienteController::class, 'edit'])->name('exibir');
+    Route::put('/update/{id}', [ClienteController::class, 'update'])->name('update');
+    Route::get('/{id}', [ClienteController::class, 'destroy'])->name('delete');
 })->middleware('auth');
 
+Route::post('cliente/cadastrar/store', [ClienteController::class, 'store'])->name('cadastrar.cliente');
 
 //cobranca/create
 //cabranca/update/{id}
@@ -70,3 +74,15 @@ Route::get('/configuracoes/tipocobranca', function () {
 Route::get('/ajuda/documento', function () {
     return view('ajuda.documento');
 })->middleware('auth');
+
+Route::fallback(function () {
+    return 'Exibir pagina de erro';
+});
+
+
+//criar nome subdomimo
+// Route::domain('{user}.cobrasim.teste')->group(function () {
+//     Route::get('/', function ($user) {
+//         return $user;
+//     });
+// });
