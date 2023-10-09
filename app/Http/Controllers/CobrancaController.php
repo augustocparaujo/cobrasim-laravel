@@ -13,6 +13,7 @@ class CobrancaController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -29,9 +30,9 @@ class CobrancaController extends Controller
     public function store(Request $request)
     {
         //
-         //pegando o usuário logado
-         $user = auth()->user();
-         $cliente->user_id = $user->id;
+        //pegando o usuário logado
+        $user = auth()->user();
+        $cliente->user_id = $user->id;
     }
 
     /**

@@ -20,5 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        //compartilhar dados para todas as rotas
+        //Views::share('userAdmin', 'Augusto Cézar');
     }
 }

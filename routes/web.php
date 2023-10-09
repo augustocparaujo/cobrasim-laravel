@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use \Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\ClienteController;
+use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -76,9 +78,8 @@ Route::get('/ajuda/documento', function () {
 })->middleware('auth');
 
 Route::fallback(function () {
-    return 'Exibir pagina de erro';
+    return view('error404');
 });
-
 
 //criar nome subdomimo
 // Route::domain('{user}.cobrasim.teste')->group(function () {
@@ -86,3 +87,49 @@ Route::fallback(function () {
 //         return $user;
 //     });
 // });
+
+
+//tiago
+/*
+Route::get('usuarios', function (Request $request) {
+    //dd($request);
+    //dd($request->path()); //tras o caminho
+    //dd($request->url()); //url
+    //dd($request->fullUrl()); //não vi difença
+    //dd($request->fullUrlWithQuery(['cruso' => 'Laravel'])); //query string
+    //dd($request->fullUrlIs());// comparar se a url e a mesma passad
+    //dd($request->is('usuario')); //verifica se a rota a acessada
+    //dd($request->routeIs('usuario')); //verifica se a rota a acessada
+    //dd($request->method()); //verifica tipo de metodo
+    //dd($request->isMethod('POST')); // pegar tipo de metodo
+    //dd($request->input('token', 'Laravel')); //segundo valor e default
+    //dd($request->query('curso', 'Sem curso')); //usuarios?token=123&curso=Laravel --> sem curso
+    //dd($request->token); //usuarios?token=123&curso=   -> 123
+    //dd($request->only('curso')); //filtra apenas o que quero
+    //dd($request->except('curso')); //todos menos o curos
+
+    
+    if ($request->has('token')) {  //validar dados vindo na rota
+        dd('token e produto existem');
+    } else {
+        dd('sem token sem acesso');
+    }
+
+    //whenHas dispara para um função e tudo que for dentro é obrigatorio
+    //hasAny se um campo existir ele executa
+    //filled se preenchido faça algo (true ou false)
+    //whenFilled quando estiver dado faça algo (primeiro parametro dado segundo função)
+    //missing se o dado não estiver na reuqest ele executa (true ou false)
+
+
+//});
+*/
+
+//camada view
+//retornando de uma lista a primeira view que achar
+/*
+Route::get('/profile', function(){
+    View::exists('user.profile); //se existe
+    return View::first(['user.profile','user.profile2']);
+});
+*/

@@ -94,21 +94,21 @@
             <div class="row">
               <div class="col-lg-2 col-md-2 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-cep">CEP</label>
-                <input type="text" id="basic-default-cep" class="form-control cep" placeholder="68000-000" name="cep"
-                  value="{{ $cliente->cep }}">
+                <input type="text" id="basic-default-cep" class="form-control cepBusca" placeholder="68000-000"
+                  name="cep" value="{{ $cliente->cep }}">
               </div>
 
               <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-endereco">Rua/Alameda/Avenida/etc</label>
-                <input type="text" id="basic-default-endereco" class="form-control"
+                <input type="text" id="basic-default-endereco" class="form-control enderecoBusca"
                   placeholder="Rua/Alameda/Avenida/etc" name="rua" value="{{ $cliente->rua }}">
               </div>
 
               <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-bairro">Bairro</label>
                 <div class="input-group input-group-merge">
-                  <input type="text" id="basic-default-bairro" class="form-control" placeholder="Bairro" name="bairro"
-                    value="{{ $cliente->bairro }}">
+                  <input type="text" id="basic-default-bairro" class="form-control bairroBusca" placeholder="Bairro"
+                    name="bairro" value="{{ $cliente->bairro }}">
                 </div>
               </div>
             </div>
@@ -116,41 +116,14 @@
             <div class="row">
               <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-municipio">Município</label>
-                <input type="text" id="basic-default-municipio" class="form-control" placeholder="Município"
+                <input type="text" id="basic-default-municipio" class="form-control cidadeBusca" placeholder="Município"
                   name="municipio" value="{{ $cliente->municipio }}">
               </div>
 
               <div class="col-lg-2 col-md-2 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-uf">UF</label>
-                <select type="text" id="basic-default-uf" class="form-select" placeholder="UF" name="estado">
-                  <option value="AC">AC</option>
-                  <option value="AL">AL</option>
-                  <option value="AP">AP</option>
-                  <option value="AM">AM</option>
-                  <option value="BA">BA</option>
-                  <option value="CE">CE</option>
-                  <option value="DF">DF</option>
-                  <option value="ES">ES</option>
-                  <option value="GO">GO</option>
-                  <option value="MA">MA</option>
-                  <option value="MS">MS</option>
-                  <option value="MT">MT</option>
-                  <option value="MG">MG</option>
-                  <option value="PA">PA</option>
-                  <option value="PB">PB</option>
-                  <option value="PR">PR</option>
-                  <option value="PE">PE</option>
-                  <option value="PI">PI</option>
-                  <option value="RJ">RJ</option>
-                  <option value="RN">RN</option>
-                  <option value="RS">RS</option>
-                  <option value="RO">RO</option>
-                  <option value="RR">RR</option>
-                  <option value="SC">SC</option>
-                  <option value="SP">SP</option>
-                  <option value="SE">SE</option>
-                  <option value="TO">TO</option>
-                </select>
+                <input type="text" id="basic-default-uf" class="form-control ufBusca" placeholder="UF" name="estado"
+                  min="2" max="2" value="{{ $cliente->estado }}">
               </div>
 
               <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
@@ -177,7 +150,7 @@
           <div class="card-body">
             <div class="table-responsive text-nowrap">
               <table class="table table-bordered">
-                <thead class="table-dark">
+                <thead class="table-primary">
                   <tr class="text-center">
                     <th>Título</th>
                     <th>PAR</th>
@@ -211,5 +184,4 @@
     </div>
   </div>
 </div>
-
 @endsection
