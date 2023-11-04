@@ -59,8 +59,8 @@
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-cpf">CPF/CNPJ</label>
-                <input type="text" class="form-control" id="basic-default-cpf" placeholder="CPF/CNPJ" name="cpf"
-                  value="{{ $cliente->cpf }}">
+                <input type="text" class="form-control" id="basic-default-cpf" placeholder="CPF/CNPJ" name="cpf_cnpj"
+                  value="{{ $cliente->cpf_cnpj }}">
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                 <label class="form-label" for="basic-default-nascimento">Nascimento</label>

@@ -33,7 +33,7 @@
                                             <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{
                                                 $clienteinfo->nome }}</strong>
                                         </td>
-                                        <td class="text-center">{{ $clienteinfo->cpf }}</td>
+                                        <td class="text-center">{{ $clienteinfo->cpf_cnpj }}</td>
                                         <td class="text-center">{{ $clienteinfo->vencimento }}</td>
                                         <td class="mobile text-center">{{ $clienteinfo->contato }}</td>
                                         <td class="text-center"><span class="badge bg-label-success me-1">{{

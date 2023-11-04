@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'cpf', 'email', 'password',
+        'name', 'cpf_cnpj', 'email', 'password',
     ];
 
     /**
@@ -59,8 +59,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    //ele tem muitos clientes
-    public function cliente(){
+    //usuário ele tem muitos clientes
+    public function cliente()
+    {
         return $this->hasMany('App\Models\Cliente');
     }
 }

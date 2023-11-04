@@ -14,7 +14,7 @@ use \Illuminate\Http\Request;
 */
 use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
-
+use Laravel\Jetstream\Http\Controllers\Inertia\UserProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,7 +31,6 @@ Route::prefix('cliente')->name('cliente.')->group(function () {
         ->name('listar');
 
     Route::get('/cadastrar', [ClienteController::class, 'create'])->name('cadastrar');
-
     Route::get('/exibir/{id}', [ClienteController::class, 'edit'])->name('exibir');
     Route::put('/update/{id}', [ClienteController::class, 'update'])->name('update');
     Route::get('/{id}', [ClienteController::class, 'destroy'])->name('delete');
@@ -108,7 +107,7 @@ Route::get('usuarios', function (Request $request) {
     //dd($request->only('curso')); //filtra apenas o que quero
     //dd($request->except('curso')); //todos menos o curos
 
-    
+
     if ($request->has('token')) {  //validar dados vindo na rota
         dd('token e produto existem');
     } else {

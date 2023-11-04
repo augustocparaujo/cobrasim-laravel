@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('complemento', 100)->nullable();
             $table->text('obs')->nullable();
             $table->string('usuariocad')->nullable();
-            $table->date('ativacao')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->date('ativacao')->default('0000-00-00');
             $table->timestamps();
         });
     }

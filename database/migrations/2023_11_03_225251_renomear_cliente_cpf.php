@@ -8,13 +8,12 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * criando a chave estrangeira um usuario pra muitos clientes
      */
     public function up(): void
     {
+        //
         Schema::table('clientes', function (Blueprint $table) {
-            //
-            $table->foreignId('user_id')->constrained();
+            $table->renameColumn('cpf', 'cpf_cnpj');
         });
     }
 
@@ -23,9 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('clientes', function (Blueprint $table) {
-            //
-            $table->dropColumn('user_id');
-        });
+        //
     }
 };

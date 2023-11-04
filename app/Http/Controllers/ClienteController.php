@@ -47,7 +47,7 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //validar dados
+        //validar dados (separa responsabilidade)
         $cliente = $request->validate([
             'nome' => 'required|string',
             'contato' => 'required|string',
