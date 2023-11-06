@@ -46,7 +46,7 @@ class InviteTeamMember implements InvitesTeamMembers
             'email' => $email,
             'role' => $role,
         ], $this->rules($team), [
-            'email.unique' => __('This user has already been invited to the team.'),
+            'email.unique' => __('Este usuário já foi convidado para a equipe.'),
         ])->after(
             $this->ensureUserIsNotAlreadyOnTeam($team, $email)
         )->validateWithBag('addTeamMember');
@@ -67,8 +67,8 @@ class InviteTeamMember implements InvitesTeamMembers
                 }),
             ],
             'role' => Jetstream::hasRoles()
-                            ? ['required', 'string', new Role]
-                            : null,
+                ? ['required', 'string', new Role]
+                : null,
         ]);
     }
 
@@ -81,7 +81,7 @@ class InviteTeamMember implements InvitesTeamMembers
             $validator->errors()->addIf(
                 $team->hasUserWithEmail($email),
                 'email',
-                __('This user already belongs to the team.')
+                __('Este usuário já pertence à equipe.')
             );
         };
     }

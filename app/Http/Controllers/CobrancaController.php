@@ -32,7 +32,7 @@ class CobrancaController extends Controller
         //
         //pegando o usuário logado
         $user = auth()->user();
-        $cliente->user_id = $user->id;
+        $usuario = $user->id;
     }
 
     /**

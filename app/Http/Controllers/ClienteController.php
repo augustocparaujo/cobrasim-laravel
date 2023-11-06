@@ -21,7 +21,8 @@ class ClienteController extends Controller
         if ($busca) {
 
             $cliente = Cliente::where([
-                ['nome', 'like', '%' . $busca . '%', 'AND', 'user_id' => $usuario]
+                ['user_id', '=', $usuario],
+                ['nome', 'like', '%' . $busca . '%']
             ])->get();
         } else {
 

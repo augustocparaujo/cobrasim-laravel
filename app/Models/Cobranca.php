@@ -9,9 +9,12 @@ class Cobranca extends Model
 {
     use HasFactory;
 
+    //atualizar tudo // se quiser que algo não possa ser atualizado só descriminar
+    protected $guarded = [];
+
     //pertencer a apenas um usuário
-      public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
-
 }

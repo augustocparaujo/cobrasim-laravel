@@ -83,14 +83,14 @@
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Relatório</span></li>
                     <li class="menu-item @yield('cobranca')">
                         <a href="/relatorio/cobranca" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
+                            <i class="menu-icon tf-icons bx bxs-bar-chart-alt-2"></i>
                             <div data-i18n="Basic">Cobrança</div>
                         </a>
                     </li>
                     <li class="menu-item @yield('relatorio-notificacao-agendada')">
                         <a href="/relatorio/notificacao-agendada" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
-                            <div data-i18n="Basic">Notificação agendada</div>
+                            <i class="menu-icon tf-icons bx bxs-calendar"></i>
+                            <div data-i18n="Basic">Agenda de notificações</div>
                         </a>
                     </li>
 
@@ -98,13 +98,13 @@
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Notificação</span></li>
                     <li class="menu-item @yield('notificacao-manual')">
                         <a href="/notificacao/manual" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
+                            <i class="menu-icon tf-icons bx bxs-message-rounded"></i>
                             <div data-i18n="Basic">Manual</div>
                         </a>
                     </li>
                     <li class="menu-item @yield('notificacao-agendada')">
                         <a href="/notificacao/agendada" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
+                            <i class="menu-icon tf-icons bx bxs-calendar-event"></i>
                             <div data-i18n="Basic">Agendada</div>
                         </a>
                     </li>
@@ -115,13 +115,13 @@
                     </li>
                     <li class="menu-item @yield('configuracoes-banco')">
                         <a href="/configuracoes/banco" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
+                            <i class="menu-icon tf-icons bx bxs-bank"></i>
                             <div data-i18n="Basic">Banco</div>
                         </a>
                     </li>
                     <li class="menu-item @yield('configuracoes-mensagem')">
                         <a href="/configuracoes/mensagem" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
+                            <i class="menu-icon tf-icons bx bxs-message-rounded-detail"></i>
                             <div data-i18n="Basic">Mensagem</div>
                         </a>
                     </li>
@@ -133,7 +133,7 @@
                     </li>
                     <li class="menu-item @yield('configuracoes-instancia')">
                         <a href="/configuracoes/instancia" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
+                            <i class="menu-icon tf-icons bx bxl-whatsapp-square"></i>
                             <div data-i18n="Basic">Instância whatsapp</div>
                         </a>
                     </li>
