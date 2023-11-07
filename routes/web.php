@@ -13,6 +13,7 @@ use \Illuminate\Http\Request;
 |
 */
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\BancoController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\Inertia\UserProfileController;
 
@@ -31,12 +32,12 @@ Route::prefix('cliente')->name('cliente.')->group(function () {
         ->name('listar');
 
     Route::get('/cadastrar', [ClienteController::class, 'create'])->name('cadastrar');
+    Route::post('/cadastrar/store', [ClienteController::class, 'store'])->name('cadastrar.cliente');
     Route::get('/exibir/{id}', [ClienteController::class, 'edit'])->name('exibir');
     Route::put('/update/{id}', [ClienteController::class, 'update'])->name('update');
     Route::get('/{id}', [ClienteController::class, 'destroy'])->name('delete');
 })->middleware('auth');
 
-Route::post('cliente/cadastrar/store', [ClienteController::class, 'store'])->name('cadastrar.cliente');
 
 //cobranca/create
 //cabranca/update/{id}
@@ -56,9 +57,9 @@ Route::get('/notificacao/agendada', function () {
     return view('notificacao.agendada');
 })->middleware('auth');
 
-Route::get('/configuracoes/banco', function () {
-    return view('configuracoes.banco');
-})->middleware('auth');
+Route::get('/configuracoes/banco', [BancoController::class, 'index'])->name('configuracoes.banco')->middleware('auth');
+Route::post('/configuracoes/banco/store', [BancoController::class, 'store'])->name('cadastrar.banco')->middleware('auth');
+
 Route::get('/configuracoes/instancia', function () {
     return view('configuracoes.instancia');
 })->middleware('auth');

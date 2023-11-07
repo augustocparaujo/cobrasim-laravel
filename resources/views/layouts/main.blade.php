@@ -114,7 +114,7 @@
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span>
                     </li>
                     <li class="menu-item @yield('configuracoes-banco')">
-                        <a href="/configuracoes/banco" class="menu-link">
+                        <a href="{{ route('configuracoes.banco') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-bank"></i>
                             <div data-i18n="Basic">Banco</div>
                         </a>

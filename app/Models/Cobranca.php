@@ -15,6 +15,12 @@ class Cobranca extends Model
     //pertencer a apenas um usuário
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->hasMany('App\Models\User');
+    }
+
+    //pertencer a apenas um cliente
+    public function cliente()
+    {
+        return $this->hasMany('App\Models\Cliente');
     }
 }

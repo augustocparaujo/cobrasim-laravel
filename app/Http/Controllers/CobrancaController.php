@@ -33,6 +33,9 @@ class CobrancaController extends Controller
         //pegando o usuário logado
         $user = auth()->user();
         $usuario = $user->id;
+
+        //cobrança só poderá ter um cliente
+
     }
 
     /**

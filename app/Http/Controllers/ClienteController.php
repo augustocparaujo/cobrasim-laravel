@@ -14,6 +14,15 @@ class ClienteController extends Controller
     {
         $busca = request('search');
 
+        /*
+        outra maneira de fazer
+        $products = Product::query();
+        $products->when($request->name, function ($query, $vl) {
+            $query->where('name', 'like', '%' . $vl . '%');
+        });
+        $products = $products->get();
+        */
+
         //pegando o usuário logado
         $user = auth()->user();
         $usuario = $user->id;

@@ -8,48 +8,38 @@
             <div class="d-flex align-items-end row">
                 <div class="col-12">
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Bancos</h5>
+                        <h5 class="card-title text-primary">Banco Mercado Pago</h5>
                     </div>
                 </div>
-                <div class="col-12 text-center">
-                    <h4 style="text-align: center">Mercado Pago</h4>
+                <div class="col-12 card-body">
 
-                    <div class="col-lg-3 col-md-3 col-sm-12 mb-3">
-                        <label for="defaultSelect" class="form-label">Situação</label>
-                        <select id="defaultSelect" class="form-select" name="situacao">
-                            <option value="ativo">ativo</option>
-                            <option value="bloqueado">bloqueado</option>
-                            <option value="cancelado">cancelado</option>
-                        </select>
-                    </div>
+                    <form action="{{ route('cadastrar.banco') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="banco" value="Mercado Pago" />
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-tokenprivado">Token
+                                privado</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control @error('tokenrpivado') is-invalid @enderror"
+                                    id="basic-default-tokenprivado" placeholder="" name="tokenprivado"
+                                    value="{{ old('tokenprivado') }}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-url">URL de notificação</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="basic-default-url"
+                                    class="form-control @error('url') is-invalid @enderror" placeholder="" aria-label=""
+                                    aria-describedby="basic-default-url" name="url" value="{{ old('url') }}">
+                            </div>
+                        </div>
 
-                    <div class="col-lg-3 col-md-3 col-sm-12 mb-3">
-                        <label for="defaultSelect" class="form-label">Forma cobrança</label>
-                        <select id="defaultSelect" class="form-select" name="formacobranca">
-                            <option value="boleto">boleto</option>
-                            <option value="pix">pix</option>
-                        </select>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-12 mb-3">
-                        <label class="form-label" for="vencimento">Vencimento</label>
-                        <input type="text" class="form-control" id="vencimento" placeholder="00" name="vencimento">
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-12 mb-3">
-                        <label class="form-label" for="ativacao">Ativação</label>
-                        <input type="date" class="form-control" id="ativacao" placeholder="00-00-00" name="ativacao">
-                    </div>
-
-
-                    <hr style="border: 1px solid E6E1E0" />
-
-                    <h4 style="text-align: center">Gerencianet</h4>
-
-                    <hr style="border: 1px solid E6E1E0" />
-
-                    <h4 style="text-align: center">PagSeguro</h4>
-
+                        <div class="row justify-content-end">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

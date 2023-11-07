@@ -39,9 +39,10 @@
                                         <td class="text-center"><span class="badge bg-label-success me-1">{{
                                                 $clienteinfo->situacao }}</span></td>
                                         <td class="text-center">
-                                            <a href="/cliente/exibir/{{ $clienteinfo->id }}" data-bs-toggle="tooltip"
-                                                data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true"
-                                                title="" data-bs-original-title="<span>Editar cliente</span>"><i
+                                            <a href="{{ route('cliente.exibir', $clienteinfo->id) }}"
+                                                data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top"
+                                                data-bs-html="true" title=""
+                                                data-bs-original-title="<span>Editar cliente</span>"><i
                                                     class="bx bx-edit-alt me-1"></i></a>
 
                                             <a href="/cliente/{{ $clienteinfo->id }}" data-bs-toggle="tooltip"
