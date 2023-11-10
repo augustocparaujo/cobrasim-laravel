@@ -24,6 +24,8 @@ class BancoStoreRequest extends FormRequest
         return [
             'banco' => 'required|string',
             'tokenprivado' => 'required|string',
+            'cliente_id' => 'nullable|string',
+            'cliente_secret' => 'nullable|string',
             'url' => 'required|string'
         ];
     }

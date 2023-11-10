@@ -15,7 +15,17 @@ class BancoController extends Controller
     public function index()
     {
         //
-        return view('configuracoes.banco');
+        //pegando o usuário logado e adiconar
+        $user = auth()->user();
+        //adicionar o dado novo no array
+        $user_id = $user->id;
+        //selecionando apenas banco do usuario
+
+        $banco = Banco::where([
+            ['user_id', '=', $user_id]
+        ])->first();
+
+        return view('configuracoes.banco', ['banco' => $banco]);
     }
 
     /**
@@ -32,18 +42,18 @@ class BancoController extends Controller
     public function store(BancoStoreRequest $request)
     {
         //tratar dados
-        $banco = $request->validated();
+        $input = $request->validated();
 
         //pegando o usuário logado e adiconar
         $user = auth()->user();
         //adicionar o dado novo no array
-        $banco['user_id'] = $user->id;
+        $input['user_id'] = $user->id;
         //salvar
         //$cliente = Cliente::create($cliente);
 
-        $banco = Banco::create($banco);
+        //dd($input);
+        $banco = Banco::create($input);
         //dd($banco);
-
         return redirect('/configuracoes/banco')->with(['msg' => 'Cadastrado com sucesso', 'tipo' => 'success']);
     }
 
@@ -66,9 +76,13 @@ class BancoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Banco $banco)
+    public function update(Request $request)
     {
-        //
+
+        //tratar dados
+        Banco::findOrFail($request->id)->update($request->all());
+        //dd($banco);
+        return redirect('/configuracoes/banco')->with(['msg' => 'Atualizado com sucesso', 'tipo' => 'success']);
     }
 
     /**

@@ -59,6 +59,7 @@ Route::get('/notificacao/agendada', function () {
 
 Route::get('/configuracoes/banco', [BancoController::class, 'index'])->name('configuracoes.banco')->middleware('auth');
 Route::post('/configuracoes/banco/store', [BancoController::class, 'store'])->name('cadastrar.banco')->middleware('auth');
+Route::put('/configuracoes/banco/{banco}', [BancoController::class, 'update'])->name('cadastrar.banco.update')->middleware('auth');
 
 Route::get('/configuracoes/instancia', function () {
     return view('configuracoes.instancia');
