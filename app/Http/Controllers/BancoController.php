@@ -15,7 +15,7 @@ class BancoController extends Controller
     public function index()
     {
         //
-        //pegando o usuário logado e adiconar
+        //pegando o usuário logado e lista
         $user = auth()->user();
         //adicionar o dado novo no array
         $user_id = $user->id;

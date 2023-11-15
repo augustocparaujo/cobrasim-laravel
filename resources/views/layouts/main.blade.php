@@ -36,6 +36,7 @@
 </head>
 
 <body>
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -127,7 +128,7 @@
                     </li>
                     <li class="menu-item @yield('configuracoes-tipocobranca')">
                         <a href="/configuracoes/tipocobranca" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
+                            <i class="menu-icon tf-icons bx bxs-collection"></i>
                             <div data-i18n="Basic">Tipos de cobrança</div>
                         </a>
                     </li>
@@ -279,6 +280,7 @@
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
+
     <!-- msg -->
     @if(session('msg'))
     <div class="buy-now">
@@ -288,6 +290,7 @@
         </div>
     </div>
     @endif
+
 
     <!-- Core JS -->
     <!-- build:js assets/libs/js/core.js -->

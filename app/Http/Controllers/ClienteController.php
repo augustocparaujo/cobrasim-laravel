@@ -25,18 +25,16 @@ class ClienteController extends Controller
 
         //pegando o usuário logado
         $user = auth()->user();
-        $usuario = $user->id;
-
         if ($busca) {
 
             $cliente = Cliente::where([
-                ['user_id', '=', $usuario],
+                ['user_id', '=', $user->id],
                 ['nome', 'like', '%' . $busca . '%']
             ])->get();
         } else {
 
             $cliente = Cliente::where([
-                ['user_id', '=', $usuario]
+                ['user_id', '=', $user->id]
             ])->get();
         }
 

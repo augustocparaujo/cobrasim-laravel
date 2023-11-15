@@ -5,4 +5,5 @@ $(document).ready(function () {
     $('.mobile').inputmask('(99) 99999-9999');
     $('.cep').inputmask('99999-999');
     $('.data').inputmask('00-00-0000');
+    $('.real').maskMoney({ symbol: "R$", decimal: ",", thousands: "." });
 });

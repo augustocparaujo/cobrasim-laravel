@@ -12,10 +12,12 @@ use \Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\BancoController;
+use App\Http\Controllers\CatalogoController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\Inertia\UserProfileController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -70,9 +72,12 @@ Route::get('/configuracoes/integracao', function () {
 Route::get('/configuracoes/mensagem', function () {
     return view('configuracoes.mensagem');
 })->middleware('auth');
-Route::get('/configuracoes/tipocobranca', function () {
-    return view('configuracoes.tipocobranca');
-})->middleware('auth');
+
+Route::get('/configuracoes/tipocobranca', [CatalogoController::class, 'index'])->name('configuracoes.tipocobranca')->middleware('auth');
+Route::post('/configuracoes/tipocobranca/store', [CatalogoController::class, 'store'])->name('cadastrar.tipocobranca')->middleware('auth');
+Route::get('/configuracoes/tipocobranca/edit/{catalogo}', [CatalogoController::class, 'edit'])->name('tipocobranca.edit')->middleware('auth');
+Route::put('/configuracoes/tipocobranca/{tipocobranca}', [CatalogoController::class, 'update'])->name('tipocobranca.update')->middleware('auth');
+Route::get('/configuracoes/tipocobranca/{tipocobranca}/delete', [CatalogoController::class, 'destroy'])->name('tipocobranca.destroy')->middleware('auth');
 
 Route::get('/ajuda/documento', function () {
     return view('ajuda.documento');

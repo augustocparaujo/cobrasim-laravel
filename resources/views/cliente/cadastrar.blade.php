@@ -8,7 +8,7 @@
             <div class="d-flex align-items-end row">
                 <div class="col-12">
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Cadastro rápido</h5>
+                        <h5 class="card-title">Cadastro rápido</h5>
                     </div>
                 </div>
                 <div class="col-12 card-body">
